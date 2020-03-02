@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @file      startup_stm32wb35xx_cm4.s
+  * @file      startup_stm32wb5mxx_cm4.s
   * @author    MCD Application Team
-  * @brief     STM32WB35xx devices vector table GCC toolchain.
+  * @brief     STM32WB5Mxx devices vector table GCC toolchain.
   *            This module performs:
   *                - Set the initial SP
   *                - Set the initial PC == Reset_Handler,
@@ -193,7 +193,7 @@ g_pfnVectors:
   .word SPI2_IRQHandler
   .word USART1_IRQHandler
   .word LPUART1_IRQHandler
-  .word 0
+  .word SAI1_IRQHandler
   .word TSC_IRQHandler
   .word EXTI15_10_IRQHandler
   .word RTC_Alarm_IRQHandler
@@ -204,7 +204,7 @@ g_pfnVectors:
   .word HSEM_IRQHandler
   .word LPTIM1_IRQHandler
   .word LPTIM2_IRQHandler
-  .word 0
+  .word LCD_IRQHandler
   .word QUADSPI_IRQHandler
   .word AES1_IRQHandler
   .word AES2_IRQHandler
@@ -367,6 +367,9 @@ g_pfnVectors:
   .weak  LPUART1_IRQHandler
   .thumb_set LPUART1_IRQHandler,Default_Handler
 
+  .weak  SAI1_IRQHandler
+  .thumb_set SAI1_IRQHandler,Default_Handler
+
   .weak  TSC_IRQHandler
   .thumb_set TSC_IRQHandler,Default_Handler
 
@@ -396,6 +399,9 @@ g_pfnVectors:
 
   .weak  LPTIM2_IRQHandler
   .thumb_set LPTIM2_IRQHandler,Default_Handler
+
+  .weak  LCD_IRQHandler
+  .thumb_set LCD_IRQHandler,Default_Handler
 
   .weak  QUADSPI_IRQHandler
   .thumb_set QUADSPI_IRQHandler,Default_Handler

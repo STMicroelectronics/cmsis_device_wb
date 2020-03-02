@@ -1,7 +1,7 @@
 ;******************************************************************************
-;* File Name          : startup_stm32wb35xx_cm4.s
+;* File Name          : startup_stm32wb30xx_cm4.s
 ;* Author             : MCD Application Team
-;* Description        : M4 core vector table of the STM32WB35xx devices for the
+;* Description        : M4 core vector table of the STM32WB30xx devices for the
 ;*                      IAR (EWARM) toolchain.
 ;*
 ;*                      This module performs:
@@ -93,10 +93,10 @@ __vector_table
         DCD     DMA1_Channel6_IRQHandler          ; DMA1 Channel 6 Interrupt
         DCD     DMA1_Channel7_IRQHandler          ; DMA1 Channel 7 Interrupt
         DCD     ADC1_IRQHandler                   ; ADC1 Interrupt
-        DCD     USB_HP_IRQHandler                 ; USB High Priority Interrupt
-        DCD     USB_LP_IRQHandler                 ; USB Low Priority Interrupt
+        DCD     0                                 ; Reserved
+        DCD     0                                 ; Reserved
         DCD     C2SEV_PWR_C2H_IRQHandler          ; CPU M0+ SEV Interrupt
-        DCD     COMP_IRQHandler                   ; COMP1 and COMP2  Interrupts
+        DCD     0                                 ; Reserved
         DCD     EXTI9_5_IRQHandler                ; EXTI Lines [9:5] Interrupt
         DCD     TIM1_BRK_IRQHandler               ; TIM1 Break Interrupt
         DCD     TIM1_UP_TIM16_IRQHandler          ; TIM1 Update and TIM16 global Interrupts
@@ -106,17 +106,17 @@ __vector_table
         DCD     PKA_IRQHandler                    ; PKA Interrupt
         DCD     I2C1_EV_IRQHandler                ; I2C1 Event Interrupt
         DCD     I2C1_ER_IRQHandler                ; I2C1 Error Interrupt
-        DCD     I2C3_EV_IRQHandler                ; I2C3 Event Interrupt
-        DCD     I2C3_ER_IRQHandler                ; I2C3 Error Interrupt
+        DCD     0                                 ; Reserved
+        DCD     0                                 ; Reserved
         DCD     SPI1_IRQHandler                   ; SPI1 Interrupt
-        DCD     SPI2_IRQHandler                   ; SPI2 Interrupt
+        DCD     0                                 ; Reserved
         DCD     USART1_IRQHandler                 ; USART1 Interrupt
-        DCD     LPUART1_IRQHandler                ; LPUART1 Interrupt
+        DCD     0                                 ; Reserved
         DCD     0                                 ; Reserved
         DCD     TSC_IRQHandler                    ; TSC Interrupt
         DCD     EXTI15_10_IRQHandler              ; EXTI Lines1[15:10 ]Interrupts
         DCD     RTC_Alarm_IRQHandler              ; RTC Alarms (A and B) Interrupt
-        DCD     CRS_IRQHandler                    ; CRS interrupt
+        DCD     0                                 ; Reserved
         DCD     PWR_SOTF_BLEACT_802ACT_RFPHASE_IRQHandler ; WKUP Interrupt from PWR
         DCD     IPCC_C1_RX_IRQHandler             ; IPCC CPU1 RX occupied interrupt
         DCD     IPCC_C1_TX_IRQHandler             ; IPCC CPU1 RX free interrupt
@@ -124,18 +124,18 @@ __vector_table
         DCD     LPTIM1_IRQHandler                 ; LPTIM1 Interrupt
         DCD     LPTIM2_IRQHandler                 ; LPTIM2 Interrupt
         DCD     0                                 ; Reserved
-        DCD     QUADSPI_IRQHandler                ; QUADSPI Interrupt
-        DCD     AES1_IRQHandler                   ; AES1 Interrupt
+        DCD     0                                 ; Reserved
+        DCD     0                                 ; Reserved
         DCD     AES2_IRQHandler                   ; AES2 Interrupt
         DCD     RNG_IRQHandler                    ; RNG1 Interrupt
         DCD     FPU_IRQHandler                    ; FPU Interrupt
-        DCD     DMA2_Channel1_IRQHandler          ; DMA2 Channel 1 Interrupt
-        DCD     DMA2_Channel2_IRQHandler          ; DMA2 Channel 2 Interrupt
-        DCD     DMA2_Channel3_IRQHandler          ; DMA2 Channel 3 Interrupt
-        DCD     DMA2_Channel4_IRQHandler          ; DMA2 Channel 4 Interrupt
-        DCD     DMA2_Channel5_IRQHandler          ; DMA2 Channel 5 Interrupt
-        DCD     DMA2_Channel6_IRQHandler          ; DMA2 Channel 6 Interrupt
-        DCD     DMA2_Channel7_IRQHandler          ; DMA2 Channel 7 Interrupt
+        DCD     0                                 ; Reserved
+        DCD     0                                 ; Reserved
+        DCD     0                                 ; Reserved
+        DCD     0                                 ; Reserved
+        DCD     0                                 ; Reserved
+        DCD     0                                 ; Reserved
+        DCD     0                                 ; Reserved
         DCD     DMAMUX1_OVR_IRQHandler            ; DMAMUX overrun Interrupt
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -292,25 +292,10 @@ DMA1_Channel7_IRQHandler
 ADC1_IRQHandler
         B ADC1_IRQHandler
 
-        PUBWEAK USB_HP_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-USB_HP_IRQHandler
-        B USB_HP_IRQHandler
-
-        PUBWEAK USB_LP_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-USB_LP_IRQHandler
-        B USB_LP_IRQHandler
-
         PUBWEAK C2SEV_PWR_C2H_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 C2SEV_PWR_C2H_IRQHandler
         B C2SEV_PWR_C2H_IRQHandler
-
-        PUBWEAK COMP_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-COMP_IRQHandler
-        B COMP_IRQHandler
 
         PUBWEAK EXTI9_5_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
@@ -357,35 +342,15 @@ I2C1_EV_IRQHandler
 I2C1_ER_IRQHandler
         B I2C1_ER_IRQHandler
 
-        PUBWEAK I2C3_EV_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-I2C3_EV_IRQHandler
-        B I2C3_EV_IRQHandler
-
-        PUBWEAK I2C3_ER_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-I2C3_ER_IRQHandler
-        B I2C3_ER_IRQHandler
-
         PUBWEAK SPI1_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 SPI1_IRQHandler
         B SPI1_IRQHandler
 
-        PUBWEAK SPI2_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-SPI2_IRQHandler
-        B SPI2_IRQHandler
-
         PUBWEAK USART1_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 USART1_IRQHandler
         B USART1_IRQHandler
-
-        PUBWEAK LPUART1_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-LPUART1_IRQHandler
-        B LPUART1_IRQHandler
 
         PUBWEAK TSC_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
@@ -401,11 +366,6 @@ EXTI15_10_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 RTC_Alarm_IRQHandler
         B RTC_Alarm_IRQHandler
-
-        PUBWEAK CRS_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-CRS_IRQHandler
-        B CRS_IRQHandler
 
         PUBWEAK PWR_SOTF_BLEACT_802ACT_RFPHASE_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
@@ -437,16 +397,6 @@ LPTIM1_IRQHandler
 LPTIM2_IRQHandler
         B LPTIM2_IRQHandler
 
-        PUBWEAK QUADSPI_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-QUADSPI_IRQHandler
-        B QUADSPI_IRQHandler
-
-        PUBWEAK AES1_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-AES1_IRQHandler
-        B AES1_IRQHandler
-
         PUBWEAK AES2_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 AES2_IRQHandler
@@ -461,41 +411,6 @@ RNG_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 FPU_IRQHandler
         B FPU_IRQHandler
-
-        PUBWEAK DMA2_Channel1_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-DMA2_Channel1_IRQHandler
-        B DMA2_Channel1_IRQHandler
-
-        PUBWEAK DMA2_Channel2_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-DMA2_Channel2_IRQHandler
-        B DMA2_Channel2_IRQHandler
-
-        PUBWEAK DMA2_Channel3_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-DMA2_Channel3_IRQHandler
-        B DMA2_Channel3_IRQHandler
-
-        PUBWEAK DMA2_Channel4_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-DMA2_Channel4_IRQHandler
-        B DMA2_Channel4_IRQHandler
-
-        PUBWEAK DMA2_Channel5_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-DMA2_Channel5_IRQHandler
-        B DMA2_Channel5_IRQHandler
-
-        PUBWEAK DMA2_Channel6_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-DMA2_Channel6_IRQHandler
-        B DMA2_Channel6_IRQHandler
-
-        PUBWEAK DMA2_Channel7_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-DMA2_Channel7_IRQHandler
-        B DMA2_Channel7_IRQHandler
 
         PUBWEAK DMAMUX1_OVR_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)

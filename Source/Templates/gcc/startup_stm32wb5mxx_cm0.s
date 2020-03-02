@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @file      startup_stm32wb35xx_cm0.s
+  * @file      startup_stm32wb5mxx_cm0.s
   * @author    MCD Application Team
-  * @brief     STM32WB35xx devices vector table GCC toolchain.
+  * @brief     STM32WB5Mxx devices vector table GCC toolchain.
   *            This module performs:
   *                - Set the initial SP
   *                - Set the initial PC == Reset_Handler,
@@ -158,14 +158,14 @@ g_pfnVectors:
   .word IPCC_C2_RX_C2_TX_HSEM_IRQHandler
   .word AES1_RNG_PKA_IRQHandler
   .word AES2_IRQHandler
-  .word _802_1_IRQHandler
+  .word LCD_802_1_IRQHandler
   .word I2C1_IRQHandler
   .word I2C3_IRQHandler
   .word SPI1_IRQHandler
   .word SPI2_IRQHandler
   .word USART1_IRQHandler
   .word LPUART1_IRQHandler
-  .word 0
+  .word SAI1_IRQHandler
   .word BLE_IRQHandler
   .word _802_2_HOST_WKUP_IRQHandler
 
@@ -254,8 +254,8 @@ g_pfnVectors:
   .weak  AES2_IRQHandler
   .thumb_set AES2_IRQHandler,Default_Handler
 
-  .weak  _802_1_IRQHandler
-  .thumb_set _802_1_IRQHandler,Default_Handler
+  .weak  LCD_802_1_IRQHandler
+  .thumb_set LCD_802_1_IRQHandler,Default_Handler
 
   .weak  I2C1_IRQHandler
   .thumb_set I2C1_IRQHandler,Default_Handler
@@ -274,6 +274,9 @@ g_pfnVectors:
 
   .weak  LPUART1_IRQHandler
   .thumb_set LPUART1_IRQHandler,Default_Handler
+
+  .weak  SAI1_IRQHandler
+  .thumb_set SAI1_IRQHandler,Default_Handler
 
   .weak  BLE_IRQHandler
   .thumb_set BLE_IRQHandler,Default_Handler

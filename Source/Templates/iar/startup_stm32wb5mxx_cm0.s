@@ -1,7 +1,7 @@
 ;******************************************************************************
-;* File Name          : startup_stm32wb35xx_cm0.s
+;* File Name          : startup_stm32wb5mxx_cm0.s
 ;* Author             : MCD Application Team
-;* Description        : MO+ core vector table of the STM32WB35xx devices for the
+;* Description        : MO+ core vector table of the STM32WB5Mxx devices for the
 ;*                      IAR (EWARM) toolchain.
 ;*
 ;*                      This module performs:
@@ -96,14 +96,14 @@ __vector_table
         DCD     IPCC_C2_RX_C2_TX_HSEM_IRQHandler  ; IPCC RX Occupied and TX Free Interrupt and Semaphore Interrupt
         DCD     AES1_RNG_PKA_IRQHandler           ; AES1,RNG and PKA Interrupt
         DCD     AES2_IRQHandler                   ; AES2 Interrupt
-        DCD     _802_1_IRQHandler                 ; 802.15.4 interrupt 1
+        DCD     LCD_802_1_IRQHandler              ; LCD Interrupt and 802.15.4 interrupt 1
         DCD     I2C1_IRQHandler                   ; I2C1 Event and Error Interrupt
         DCD     I2C3_IRQHandler                   ; I2C3 Event and Error Interrupt
         DCD     SPI1_IRQHandler                   ; SPI1 Interrupts
         DCD     SPI2_IRQHandler                   ; SPI2 Interrupt
         DCD     USART1_IRQHandler                 ; USART1 Interrupt
         DCD     LPUART1_IRQHandler                ; LPUART1 Interrupt
-        DCD     0                                 ; Reserved
+        DCD     SAI1_IRQHandler                   ; SAI1 Interrupt
         DCD     BLE_IRQHandler                    ; BLE Interrupt
         DCD     _802_2_HOST_WKUP_IRQHandler       ; 802.15.4 Interrupt
 
@@ -251,10 +251,10 @@ AES1_RNG_PKA_IRQHandler
 AES2_IRQHandler
         B AES2_IRQHandler
 
-        PUBWEAK _802_1_IRQHandler
+        PUBWEAK LCD_802_1_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
-_802_1_IRQHandler
-        B _802_1_IRQHandler
+LCD_802_1_IRQHandler
+        B LCD_802_1_IRQHandler
 
         PUBWEAK I2C1_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
@@ -285,6 +285,11 @@ USART1_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 LPUART1_IRQHandler
         B LPUART1_IRQHandler
+
+        PUBWEAK SAI1_IRQHandler
+        SECTION .text:CODE:NOROOT:REORDER(1)
+SAI1_IRQHandler
+        B SAI1_IRQHandler
 
         PUBWEAK BLE_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)

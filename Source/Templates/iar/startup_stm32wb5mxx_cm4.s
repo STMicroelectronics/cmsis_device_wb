@@ -1,7 +1,7 @@
 ;******************************************************************************
-;* File Name          : startup_stm32wb35xx_cm4.s
+;* File Name          : startup_stm32wb5mxx_cm4.s
 ;* Author             : MCD Application Team
-;* Description        : M4 core vector table of the STM32WB35xx devices for the
+;* Description        : M4 core vector table of the STM32WB5Mxx devices for the
 ;*                      IAR (EWARM) toolchain.
 ;*
 ;*                      This module performs:
@@ -112,7 +112,7 @@ __vector_table
         DCD     SPI2_IRQHandler                   ; SPI2 Interrupt
         DCD     USART1_IRQHandler                 ; USART1 Interrupt
         DCD     LPUART1_IRQHandler                ; LPUART1 Interrupt
-        DCD     0                                 ; Reserved
+        DCD     SAI1_IRQHandler                   ; SAI Interrupt
         DCD     TSC_IRQHandler                    ; TSC Interrupt
         DCD     EXTI15_10_IRQHandler              ; EXTI Lines1[15:10 ]Interrupts
         DCD     RTC_Alarm_IRQHandler              ; RTC Alarms (A and B) Interrupt
@@ -123,7 +123,7 @@ __vector_table
         DCD     HSEM_IRQHandler                   ; HSEM0 Interrupt
         DCD     LPTIM1_IRQHandler                 ; LPTIM1 Interrupt
         DCD     LPTIM2_IRQHandler                 ; LPTIM2 Interrupt
-        DCD     0                                 ; Reserved
+        DCD     LCD_IRQHandler                    ; LCD Interrupt
         DCD     QUADSPI_IRQHandler                ; QUADSPI Interrupt
         DCD     AES1_IRQHandler                   ; AES1 Interrupt
         DCD     AES2_IRQHandler                   ; AES2 Interrupt
@@ -387,6 +387,11 @@ USART1_IRQHandler
 LPUART1_IRQHandler
         B LPUART1_IRQHandler
 
+        PUBWEAK SAI1_IRQHandler
+        SECTION .text:CODE:NOROOT:REORDER(1)
+SAI1_IRQHandler
+        B SAI1_IRQHandler
+
         PUBWEAK TSC_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 TSC_IRQHandler
@@ -436,6 +441,11 @@ LPTIM1_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 LPTIM2_IRQHandler
         B LPTIM2_IRQHandler
+
+        PUBWEAK LCD_IRQHandler
+        SECTION .text:CODE:NOROOT:REORDER(1)
+LCD_IRQHandler
+        B LCD_IRQHandler
 
         PUBWEAK QUADSPI_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)

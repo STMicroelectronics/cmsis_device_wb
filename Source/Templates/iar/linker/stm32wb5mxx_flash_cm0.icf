@@ -2,18 +2,18 @@
 /*-Editor annotation file-*/
 /* IcfEditorFile="$TOOLKIT_DIR$\config\ide\IcfEditor\cortex_v1_0.xml" */
 /*-Specials-*/
-define symbol __ICFEDIT_intvec_start__ = 0x20000000;
+define symbol __ICFEDIT_intvec_start__ = 0x08080000 ;
 /*-Memory Regions-*/
-/***** RAM dedicated to M4 *****/
-define symbol __ICFEDIT_region_ROM_start__ = 0x20000000;
-define symbol __ICFEDIT_region_ROM_end__   = 0x20003FFF;
-
-define symbol __ICFEDIT_region_RAM_start__  = 0x20004000  ;
-define symbol __ICFEDIT_region_RAM_end__    = 0x20007FFF ;
-
+/******************/
+/***** FLASH Part dedicated to M0 *****/
+define symbol __ICFEDIT_region_ROM_start__    = 0x08080000 ;  
+define symbol __ICFEDIT_region_ROM_end__      = 0x080FFFFF ;
+/***** RAM2b dedicated to M0 *****/
+define symbol __ICFEDIT_region_RAM_start__    = 0x20038000  ;
+define symbol __ICFEDIT_region_RAM_end__      = 0x2003FFFF  ;
 /***** RAM2a *****/
-define symbol __ICFEDIT_region_RAM_SHARED_start__  = 0x20008000  ;
-define symbol __ICFEDIT_region_RAM_SHARED_end__    = 0x2000A800  ;
+define symbol __ICFEDIT_region_RAM_SHARED_start__  = 0x20030000  ;
+define symbol __ICFEDIT_region_RAM_SHARED_end__    = 0x20037FFF  ;
 
 /*-Sizes-*/
 define symbol __ICFEDIT_size_cstack__ = 0x400;
@@ -24,6 +24,7 @@ define symbol __ICFEDIT_size_heap__   = 0x200;
 define memory mem with size = 4G;
 define region ROM_region      = mem:[from __ICFEDIT_region_ROM_start__   to __ICFEDIT_region_ROM_end__];
 define region RAM_region      = mem:[from __ICFEDIT_region_RAM_start__   to __ICFEDIT_region_RAM_end__];
+define region RAM_SHARED_region    = mem:[from __ICFEDIT_region_RAM_SHARED_start__   to __ICFEDIT_region_RAM_SHARED_end__];
 
 
 define block CSTACK    with alignment = 8, size = __ICFEDIT_size_cstack__   { };

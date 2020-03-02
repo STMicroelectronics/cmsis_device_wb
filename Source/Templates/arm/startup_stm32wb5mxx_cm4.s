@@ -1,7 +1,7 @@
 ;******************************************************************************
-;* File Name          : startup_stm32wb35xx_cm4.s
+;* File Name          : startup_stm32wb5mxx_cm4.s
 ;* Author             : MCD Application Team
-;* Description        : STM32WB35xx devices vector table for MDK-ARM toolchain.
+;* Description        : STM32WB5Mxx devices vector table for MDK-ARM toolchain.
 ;*                      This module performs:
 ;*                      - Set the initial SP
 ;*                      - Set the initial PC == Reset_Handler
@@ -113,7 +113,7 @@ __Vectors       DCD     __initial_sp              ; Top of Stack
         DCD     SPI2_IRQHandler                   ; SPI2 Interrupt
         DCD     USART1_IRQHandler                 ; USART1 Interrupt
         DCD     LPUART1_IRQHandler                ; LPUART1 Interrupt
-        DCD     0                                 ; Reserved
+        DCD     SAI1_IRQHandler                   ; SAI Interrupt
         DCD     TSC_IRQHandler                    ; TSC Interrupt
         DCD     EXTI15_10_IRQHandler              ; EXTI Lines1[15:10 ]Interrupts
         DCD     RTC_Alarm_IRQHandler              ; RTC Alarms (A and B) Interrupt
@@ -124,7 +124,7 @@ __Vectors       DCD     __initial_sp              ; Top of Stack
         DCD     HSEM_IRQHandler                   ; HSEM0 Interrupt
         DCD     LPTIM1_IRQHandler                 ; LPTIM1 Interrupt
         DCD     LPTIM2_IRQHandler                 ; LPTIM2 Interrupt
-        DCD     0                                 ; Reserved
+        DCD     LCD_IRQHandler                    ; LCD Interrupt
         DCD     QUADSPI_IRQHandler                ; QUADSPI Interrupt
         DCD     AES1_IRQHandler                   ; AES1 Interrupt
         DCD     AES2_IRQHandler                   ; AES2 Interrupt
@@ -241,6 +241,7 @@ Default_Handler PROC
                 EXPORT  SPI2_IRQHandler                   [WEAK]
                 EXPORT  USART1_IRQHandler                 [WEAK]
                 EXPORT  LPUART1_IRQHandler                [WEAK]
+                EXPORT  SAI1_IRQHandler                   [WEAK]
                 EXPORT  TSC_IRQHandler                    [WEAK]
                 EXPORT  EXTI15_10_IRQHandler              [WEAK]
                 EXPORT  RTC_Alarm_IRQHandler              [WEAK]
@@ -251,6 +252,7 @@ Default_Handler PROC
                 EXPORT  HSEM_IRQHandler                   [WEAK]
                 EXPORT  LPTIM1_IRQHandler                 [WEAK]
                 EXPORT  LPTIM2_IRQHandler                 [WEAK]
+                EXPORT  LCD_IRQHandler                    [WEAK]
                 EXPORT  QUADSPI_IRQHandler                [WEAK]
                 EXPORT  AES1_IRQHandler                   [WEAK]
                 EXPORT  AES2_IRQHandler                   [WEAK]
@@ -303,6 +305,7 @@ SPI1_IRQHandler
 SPI2_IRQHandler
 USART1_IRQHandler
 LPUART1_IRQHandler
+SAI1_IRQHandler
 TSC_IRQHandler
 EXTI15_10_IRQHandler
 RTC_Alarm_IRQHandler
@@ -313,6 +316,7 @@ IPCC_C1_TX_IRQHandler
 HSEM_IRQHandler
 LPTIM1_IRQHandler
 LPTIM2_IRQHandler
+LCD_IRQHandler
 QUADSPI_IRQHandler
 AES1_IRQHandler
 AES2_IRQHandler

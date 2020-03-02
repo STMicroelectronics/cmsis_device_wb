@@ -1,7 +1,7 @@
 /**
 *****************************************************************************
 **
-**  File        : stm32wb35xx_flash_cm4.ld
+**  File        : stm32wb30xx_flash_cm4.ld
 **
 **  Abstract    : System Workbench Minimal System calls file
 **
