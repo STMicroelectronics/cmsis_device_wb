@@ -1,7 +1,7 @@
 ;******************************************************************************
-;* File Name          : startup_stm32wb50xx_cm4.s
+;* File Name          : startup_stm32wb15xx_cm4.s
 ;* Author             : MCD Application Team
-;* Description        : M4 core vector table of the STM32WB50xx devices for the
+;* Description        : M4 core vector table of the STM32WB15xx devices for the
 ;*                      IAR (EWARM) toolchain.
 ;*
 ;*                      This module performs:
@@ -96,11 +96,11 @@ __vector_table
         DCD     0                                 ; Reserved
         DCD     0                                 ; Reserved
         DCD     C2SEV_PWR_C2H_IRQHandler          ; CPU M0+ SEV Interrupt
-        DCD     0                                 ; Reserved
+        DCD     COMP_IRQHandler                   ; COMP1 Interrupts
         DCD     EXTI9_5_IRQHandler                ; EXTI Lines [9:5] Interrupt
         DCD     TIM1_BRK_IRQHandler               ; TIM1 Break Interrupt
-        DCD     TIM1_UP_TIM16_IRQHandler          ; TIM1 Update and TIM16 global Interrupts
-        DCD     TIM1_TRG_COM_TIM17_IRQHandler     ; TIM1 Trigger and Communication and TIM17 global Interrupts
+        DCD     TIM1_UP_IRQHandler                ; TIM1 Update Interrupt
+        DCD     TIM1_TRG_COM_IRQHandler           ; TIM1 Trigger and Communication Interrupts
         DCD     TIM1_CC_IRQHandler                ; TIM1 Capture Compare Interrupt
         DCD     TIM2_IRQHandler                   ; TIM2 Global Interrupt
         DCD     PKA_IRQHandler                    ; PKA Interrupt
@@ -111,13 +111,13 @@ __vector_table
         DCD     SPI1_IRQHandler                   ; SPI1 Interrupt
         DCD     0                                 ; Reserved
         DCD     USART1_IRQHandler                 ; USART1 Interrupt
+        DCD     LPUART1_IRQHandler                ; LPUART1 Interrupt
         DCD     0                                 ; Reserved
-        DCD     0                                 ; Reserved
-        DCD     0                                 ; Reserved
+        DCD     TSC_IRQHandler                    ; TSC Interrupt
         DCD     EXTI15_10_IRQHandler              ; EXTI Lines1[15:10 ]Interrupts
         DCD     RTC_Alarm_IRQHandler              ; RTC Alarms (A and B) Interrupt
         DCD     0                                 ; Reserved
-        DCD     PWR_SOTF_BLEACT_802ACT_RFPHASE_IRQHandler ; WKUP Interrupt from PWR
+        DCD     PWR_SOTF_BLEACT_RFPHASE_IRQHandler ; WKUP Interrupt from PWR
         DCD     IPCC_C1_RX_IRQHandler             ; IPCC CPU1 RX occupied interrupt
         DCD     IPCC_C1_TX_IRQHandler             ; IPCC CPU1 RX free interrupt
         DCD     HSEM_IRQHandler                   ; HSEM0 Interrupt
@@ -297,6 +297,11 @@ ADC1_IRQHandler
 C2SEV_PWR_C2H_IRQHandler
         B C2SEV_PWR_C2H_IRQHandler
 
+        PUBWEAK COMP_IRQHandler
+        SECTION .text:CODE:NOROOT:REORDER(1)
+COMP_IRQHandler
+        B COMP_IRQHandler
+
         PUBWEAK EXTI9_5_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 EXTI9_5_IRQHandler
@@ -307,15 +312,15 @@ EXTI9_5_IRQHandler
 TIM1_BRK_IRQHandler
         B TIM1_BRK_IRQHandler
 
-        PUBWEAK TIM1_UP_TIM16_IRQHandler
+        PUBWEAK TIM1_UP_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
-TIM1_UP_TIM16_IRQHandler
-        B TIM1_UP_TIM16_IRQHandler
+TIM1_UP_IRQHandler
+        B TIM1_UP_IRQHandler
 
-        PUBWEAK TIM1_TRG_COM_TIM17_IRQHandler
+        PUBWEAK TIM1_TRG_COM_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
-TIM1_TRG_COM_TIM17_IRQHandler
-        B TIM1_TRG_COM_TIM17_IRQHandler
+TIM1_TRG_COM_IRQHandler
+        B TIM1_TRG_COM_IRQHandler
 
         PUBWEAK TIM1_CC_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
@@ -352,6 +357,16 @@ SPI1_IRQHandler
 USART1_IRQHandler
         B USART1_IRQHandler
 
+        PUBWEAK LPUART1_IRQHandler
+        SECTION .text:CODE:NOROOT:REORDER(1)
+LPUART1_IRQHandler
+        B LPUART1_IRQHandler
+
+        PUBWEAK TSC_IRQHandler
+        SECTION .text:CODE:NOROOT:REORDER(1)
+TSC_IRQHandler
+        B TSC_IRQHandler
+
         PUBWEAK EXTI15_10_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 EXTI15_10_IRQHandler
@@ -362,10 +377,10 @@ EXTI15_10_IRQHandler
 RTC_Alarm_IRQHandler
         B RTC_Alarm_IRQHandler
 
-        PUBWEAK PWR_SOTF_BLEACT_802ACT_RFPHASE_IRQHandler
+        PUBWEAK PWR_SOTF_BLEACT_RFPHASE_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
-PWR_SOTF_BLEACT_802ACT_RFPHASE_IRQHandler
-        B PWR_SOTF_BLEACT_802ACT_RFPHASE_IRQHandler
+PWR_SOTF_BLEACT_RFPHASE_IRQHandler
+        B PWR_SOTF_BLEACT_RFPHASE_IRQHandler
 
         PUBWEAK IPCC_C1_RX_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)

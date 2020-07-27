@@ -51,6 +51,8 @@ defined in linker script */
 Reset_Handler:
   ldr   r0, =_estack
   mov   sp, r0          /* set stack pointer */
+/* Call the clock system intitialization function.*/
+  bl  SystemInit
 
 /* Copy the data segment initializers from flash to SRAM */
   ldr r0, =_sdata
@@ -83,8 +85,6 @@ LoopFillZerobss:
   cmp r2, r4
   bcc FillZerobss
 
-/* Call the clock system intitialization function.*/
-  bl  SystemInit
 /* Call static constructors */
   bl __libc_init_array
 /* Call the application s entry point.*/
@@ -144,7 +144,7 @@ g_pfnVectors:
   .word EXTI1_0_IRQHandler
   .word EXTI3_2_IRQHandler
   .word EXTI15_4_IRQHandler
-  .word TSC_802_0_IRQHandler
+  .word _802_0_IRQHandler
   .word DMA1_Channel1_2_3_IRQHandler
   .word DMA1_Channel4_5_6_7_IRQHandler
   .word DMA2_DMAMUX1_OVR_IRQHandler
@@ -162,7 +162,6 @@ g_pfnVectors:
   .word I2C1_IRQHandler
   .word I2C3_IRQHandler
   .word SPI1_IRQHandler
-  .word SPI2_IRQHandler
   .word USART1_IRQHandler
   .word LPUART1_IRQHandler
   .word 0
@@ -212,8 +211,8 @@ g_pfnVectors:
   .weak  EXTI15_4_IRQHandler
   .thumb_set EXTI15_4_IRQHandler,Default_Handler
 
-  .weak  TSC_802_0_IRQHandler
-  .thumb_set TSC_802_0_IRQHandler,Default_Handler
+  .weak  _802_0_IRQHandler
+  .thumb_set _802_0_IRQHandler,Default_Handler
 
   .weak  DMA1_Channel1_2_3_IRQHandler
   .thumb_set DMA1_Channel1_2_3_IRQHandler,Default_Handler
@@ -265,9 +264,6 @@ g_pfnVectors:
 
   .weak  SPI1_IRQHandler
   .thumb_set SPI1_IRQHandler,Default_Handler
-
-  .weak  SPI2_IRQHandler
-  .thumb_set SPI2_IRQHandler,Default_Handler
 
   .weak  USART1_IRQHandler
   .thumb_set USART1_IRQHandler,Default_Handler

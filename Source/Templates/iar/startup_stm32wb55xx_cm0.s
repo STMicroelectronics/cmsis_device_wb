@@ -76,11 +76,11 @@ __vector_table
         ; External Interrupts
         DCD     0                                 ; Reserved
         DCD     PVD_PVM_IRQHandler                ; PVD and PVM detector
-        DCD     RTC_LSECSS_IRQHandler             ; TC Wakeup + RTC Tamper and TimeStamp + RTC Alarms (A & B) and LSECSS Interrupts
+        DCD     RTC_LSECSS_IRQHandler             ; RTC Wakeup + RTC Tamper and TimeStamp + RTC Alarms (A & B) and LSECSS Interrupts
         DCD     USB_CRS_IRQHandler                ; USB High Priority, Low Priority (including USB wakeup) and CRS Interrupts
         DCD     RCC_FLASH_C1SEV_IRQHandler        ; RCC and FLASH and CPU1 M4 SEV Interrupt
         DCD     EXTI1_0_IRQHandler                ; EXTI Line 1:0 Interrupt
-        DCD     EXTI3_2_IRQHandler                ; XTI Line 3:2 Interrupt
+        DCD     EXTI3_2_IRQHandler                ; EXTI Line 3:2 Interrupt
         DCD     EXTI15_4_IRQHandler               ; EXTI Line 15:4 interrupt
         DCD     TSC_802_0_IRQHandler              ; TSC Interrupt
         DCD     DMA1_Channel1_2_3_IRQHandler      ; DMA1 Channel 1 to 3 Interrupt

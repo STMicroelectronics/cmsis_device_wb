@@ -77,13 +77,13 @@ __Vectors       DCD     __initial_sp                     ; Top of Stack
 
                 ; External Interrupts                    
                 DCD     PVD_PVM_IRQHandler               ; PVD and PVM detector
-                DCD     RTC_LSECSS_IRQHandler            ; TC Wakeup + RTC Tamper and TimeStamp + RTC Alarms (A & B) and LSECSS Interrupts
+                DCD     RTC_LSECSS_IRQHandler            ; RTC Wakeup + RTC Tamper and TimeStamp + RTC Alarms (A & B) and LSECSS Interrupts
                 DCD     USB_CRS_IRQHandler               ; USB High Priority, Low Priority (including USB wakeup) and CRS Interrupts
                 DCD     RCC_FLASH_C1SEV_IRQHandler       ; RCC1 and FLASH and CPU1 M4 SEV Interrupt
                 DCD     EXTI1_0_IRQHandler               ; EXTI Line 1:0 Interrupt
-                DCD     EXTI3_2_IRQHandler               ; XTI Line 3:2 Interrupt
+                DCD     EXTI3_2_IRQHandler               ; EXTI Line 3:2 Interrupt
                 DCD     EXTI15_4_IRQHandler              ; EXTI Line 15:4 interrupt
-                DCD     TSC_802_0_IRQHandler             ; TSC Interrupt
+                DCD     _802_0_IRQHandler                ; 802.15.4 Interrupt 0
                 DCD     DMA1_Channel1_2_3_IRQHandler     ; DMA1 Channel 1 to 3 Interrupt
                 DCD     DMA1_Channel4_5_6_7_IRQHandler   ; DMA1 Channels 4,5,6,7 Interrupt 
                 DCD     DMA2_DMAMUX1_OVR_IRQHandler      ; DMA2 Channels[1..7] and DMAMUX Overrun Interrupts          
@@ -101,7 +101,6 @@ __Vectors       DCD     __initial_sp                     ; Top of Stack
                 DCD     I2C1_IRQHandler                  ; I2C1 Event and Error Interrupt
                 DCD     I2C3_IRQHandler                  ; I2C3 Event and Error Interrupt
                 DCD     SPI1_IRQHandler                  ; SPI1 Interrupts
-                DCD     SPI2_IRQHandler                  ; SPI2 Interrupt
                 DCD     USART1_IRQHandler                ; USART1 Interrupt
                 DCD     LPUART1_IRQHandler               ; LPUART1 Interrupt
                 DCD     0                                ; Reserved
@@ -157,7 +156,7 @@ Default_Handler PROC
                 EXPORT  EXTI1_0_IRQHandler               [WEAK]
                 EXPORT  EXTI3_2_IRQHandler               [WEAK]
                 EXPORT  EXTI15_4_IRQHandler              [WEAK]
-                EXPORT  TSC_802_0_IRQHandler             [WEAK]
+                EXPORT  _802_0_IRQHandler                [WEAK]
                 EXPORT  DMA1_Channel1_2_3_IRQHandler     [WEAK]
                 EXPORT  DMA1_Channel4_5_6_7_IRQHandler   [WEAK]
                 EXPORT  DMA2_DMAMUX1_OVR_IRQHandler      [WEAK]
@@ -175,7 +174,6 @@ Default_Handler PROC
                 EXPORT  I2C1_IRQHandler                  [WEAK]
                 EXPORT  I2C3_IRQHandler                  [WEAK]
                 EXPORT  SPI1_IRQHandler                  [WEAK]
-                EXPORT  SPI2_IRQHandler                  [WEAK]
                 EXPORT  USART1_IRQHandler                [WEAK]
                 EXPORT  LPUART1_IRQHandler               [WEAK]
                 EXPORT  BLE_IRQHandler                   [WEAK]
@@ -188,7 +186,7 @@ RCC_FLASH_C1SEV_IRQHandler
 EXTI1_0_IRQHandler
 EXTI3_2_IRQHandler
 EXTI15_4_IRQHandler
-TSC_802_0_IRQHandler
+_802_0_IRQHandler
 DMA1_Channel1_2_3_IRQHandler
 DMA1_Channel4_5_6_7_IRQHandler
 DMA2_DMAMUX1_OVR_IRQHandler
@@ -206,7 +204,6 @@ _802_1_IRQHandler
 I2C1_IRQHandler
 I2C3_IRQHandler
 SPI1_IRQHandler
-SPI2_IRQHandler
 USART1_IRQHandler
 LPUART1_IRQHandler
 BLE_IRQHandler
