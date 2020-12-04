@@ -27,17 +27,19 @@ Details about the content of this release are available in the release note [her
 
 In this table, you can find the successive versions of this CMSIS Device component, in-line with the corresponding versions of the full MCU package:
 
-CMSIS Device WB | CMSIS Core | Was delivered in the full MCU package
---------------- | ---------- | -------------------------------------
-Tag v1.1.0 | Tag v4.5_cm4 | Tag v1.1.0  (and following, if any, till next tag)
-Tag v1.2.0 | Tag v5.4.0_cm4 | Tag v1.2.0  (and following, if any, till next tag)
-Tag v1.3.0 | Tag v5.4.0_cm4 | Tag v1.3.0  (and following, if any, till next tag)
-Tag v1.4.0 | Tag v5.4.0_cm4 | Tag v1.5.0  (and following, if any, till next tag)
-Tag v1.5.0 | Tag v5.4.0_cm4 | Tag v1.8.0  (and following, if any, till next tag)
+CMSIS Device WB | CMSIS Core     | Was delivered in the full MCU package
+--------------- | ----------     | -------------------------------------
+Tag v1.0.0      | Tag v4.5_cm4   | Tag v1.0.0
+Tag v1.1.0      | Tag v4.5_cm4   | Tag v1.1.0
+Tag v1.2.0      | Tag v5.4.0_cm4 | Tag v1.2.0
+Tag v1.3.0      | Tag v5.4.0_cm4 | Tag v1.3.0
+Tag v1.4.0      | Tag v5.4.0_cm4 | Tag v1.5.0
+Tag v1.5.0      | Tag v5.4.0_cm4 | Tag v1.8.0
+Tag v1.7.0      | Tag v5.6.0_cm4 | Tag v1.10.0
 
 The full **STM32CubeWB** MCU package is available [here](https://github.com/STMicroelectronics/STM32CubeWB).
 
 ## Troubleshooting
-If you have any issue with the **Software content** of this repo, you can [file an issue on Github](https://github.com/STMicroelectronics/cmsis_device_wb/issues/new/choose).
+If you have any issue with the **Software content** of this repo, you can [file an issue on Github](https://github.com/STMicroelectronics/cmsis_device_wb/issues/new).
 
 For any other question related to the product, the tools, the environment, you can submit a topic on the [ST Community/STM32 MCUs forum](https://community.st.com/s/group/0F90X000000AXsASAW/stm32-mcus).
