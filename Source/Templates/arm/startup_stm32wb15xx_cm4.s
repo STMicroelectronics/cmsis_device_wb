@@ -1,7 +1,7 @@
 ;******************************************************************************
-;* File Name          : startup_stm32wb35xx_cm4.s
+;* File Name          : startup_stm32wb15xx_cm4.s
 ;* Author             : MCD Application Team
-;* Description        : STM32WB35xx devices vector table for MDK-ARM toolchain.
+;* Description        : STM32WB15xx devices vector table for MDK-ARM toolchain.
 ;*                      This module performs:
 ;*                      - Set the initial SP
 ;*                      - Set the initial PC == Reset_Handler
@@ -94,49 +94,49 @@ __Vectors       DCD     __initial_sp              ; Top of Stack
         DCD     DMA1_Channel6_IRQHandler          ; DMA1 Channel 6 Interrupt
         DCD     DMA1_Channel7_IRQHandler          ; DMA1 Channel 7 Interrupt
         DCD     ADC1_IRQHandler                   ; ADC1 Interrupt
-        DCD     USB_HP_IRQHandler                 ; USB High Priority Interrupt
-        DCD     USB_LP_IRQHandler                 ; USB Low Priority Interrupt
+        DCD     0                                 ; Reserved
+        DCD     0                                 ; Reserved
         DCD     C2SEV_PWR_C2H_IRQHandler          ; CPU M0+ SEV Interrupt
-        DCD     COMP_IRQHandler                   ; COMP1 and COMP2  Interrupts
+        DCD     COMP_IRQHandler                   ; COMP1 Interrupts
         DCD     EXTI9_5_IRQHandler                ; EXTI Lines [9:5] Interrupt
         DCD     TIM1_BRK_IRQHandler               ; TIM1 Break Interrupt
-        DCD     TIM1_UP_TIM16_IRQHandler          ; TIM1 Update and TIM16 global Interrupts
-        DCD     TIM1_TRG_COM_TIM17_IRQHandler     ; TIM1 Trigger and Communication and TIM17 global Interrupts
+        DCD     TIM1_UP_IRQHandler                ; TIM1 Update Interrupt
+        DCD     TIM1_TRG_COM_IRQHandler           ; TIM1 Trigger and Communication Interrupts
         DCD     TIM1_CC_IRQHandler                ; TIM1 Capture Compare Interrupt
         DCD     TIM2_IRQHandler                   ; TIM2 Global Interrupt
         DCD     PKA_IRQHandler                    ; PKA Interrupt
         DCD     I2C1_EV_IRQHandler                ; I2C1 Event Interrupt
         DCD     I2C1_ER_IRQHandler                ; I2C1 Error Interrupt
-        DCD     I2C3_EV_IRQHandler                ; I2C3 Event Interrupt
-        DCD     I2C3_ER_IRQHandler                ; I2C3 Error Interrupt
+        DCD     0                                 ; Reserved
+        DCD     0                                 ; Reserved
         DCD     SPI1_IRQHandler                   ; SPI1 Interrupt
         DCD     0                                 ; Reserved
         DCD     USART1_IRQHandler                 ; USART1 Interrupt
         DCD     LPUART1_IRQHandler                ; LPUART1 Interrupt
         DCD     0                                 ; Reserved
-        DCD     0                                 ; Reserved
+        DCD     TSC_IRQHandler                    ; TSC Interrupt
         DCD     EXTI15_10_IRQHandler              ; EXTI Lines1[15:10 ]Interrupts
         DCD     RTC_Alarm_IRQHandler              ; RTC Alarms (A and B) Interrupt
-        DCD     CRS_IRQHandler                    ; CRS interrupt
-        DCD     PWR_SOTF_BLEACT_802ACT_RFPHASE_IRQHandler ; WKUP Interrupt from PWR
+        DCD     0                                 ; Reserved
+        DCD     PWR_SOTF_BLEACT_RFPHASE_IRQHandler ; WKUP Interrupt from PWR
         DCD     IPCC_C1_RX_IRQHandler             ; IPCC CPU1 RX occupied interrupt
         DCD     IPCC_C1_TX_IRQHandler             ; IPCC CPU1 RX free interrupt
         DCD     HSEM_IRQHandler                   ; HSEM0 Interrupt
         DCD     LPTIM1_IRQHandler                 ; LPTIM1 Interrupt
         DCD     LPTIM2_IRQHandler                 ; LPTIM2 Interrupt
         DCD     0                                 ; Reserved
-        DCD     QUADSPI_IRQHandler                ; QUADSPI Interrupt
-        DCD     AES1_IRQHandler                   ; AES1 Interrupt
+        DCD     0                                 ; Reserved
+        DCD     0                                 ; Reserved
         DCD     AES2_IRQHandler                   ; AES2 Interrupt
         DCD     RNG_IRQHandler                    ; RNG1 Interrupt
         DCD     FPU_IRQHandler                    ; FPU Interrupt
-        DCD     DMA2_Channel1_IRQHandler          ; DMA2 Channel 1 Interrupt
-        DCD     DMA2_Channel2_IRQHandler          ; DMA2 Channel 2 Interrupt
-        DCD     DMA2_Channel3_IRQHandler          ; DMA2 Channel 3 Interrupt
-        DCD     DMA2_Channel4_IRQHandler          ; DMA2 Channel 4 Interrupt
-        DCD     DMA2_Channel5_IRQHandler          ; DMA2 Channel 5 Interrupt
-        DCD     DMA2_Channel6_IRQHandler          ; DMA2 Channel 6 Interrupt
-        DCD     DMA2_Channel7_IRQHandler          ; DMA2 Channel 7 Interrupt
+        DCD     0                                 ; Reserved
+        DCD     0                                 ; Reserved
+        DCD     0                                 ; Reserved
+        DCD     0                                 ; Reserved
+        DCD     0                                 ; Reserved
+        DCD     0                                 ; Reserved
+        DCD     0                                 ; Reserved
         DCD     DMAMUX1_OVR_IRQHandler            ; DMAMUX overrun Interrupt
 
 __Vectors_End
@@ -222,45 +222,33 @@ Default_Handler PROC
                 EXPORT  DMA1_Channel6_IRQHandler          [WEAK]
                 EXPORT  DMA1_Channel7_IRQHandler          [WEAK]
                 EXPORT  ADC1_IRQHandler                   [WEAK]
-                EXPORT  USB_HP_IRQHandler                 [WEAK]
-                EXPORT  USB_LP_IRQHandler                 [WEAK]
                 EXPORT  C2SEV_PWR_C2H_IRQHandler          [WEAK]
                 EXPORT  COMP_IRQHandler                   [WEAK]
                 EXPORT  EXTI9_5_IRQHandler                [WEAK]
                 EXPORT  TIM1_BRK_IRQHandler               [WEAK]
-                EXPORT  TIM1_UP_TIM16_IRQHandler          [WEAK]
-                EXPORT  TIM1_TRG_COM_TIM17_IRQHandler     [WEAK]
+                EXPORT  TIM1_UP_IRQHandler                [WEAK]
+                EXPORT  TIM1_TRG_COM_IRQHandler           [WEAK]
                 EXPORT  TIM1_CC_IRQHandler                [WEAK]
                 EXPORT  TIM2_IRQHandler                   [WEAK]
                 EXPORT  PKA_IRQHandler                    [WEAK]
                 EXPORT  I2C1_EV_IRQHandler                [WEAK]
                 EXPORT  I2C1_ER_IRQHandler                [WEAK]
-                EXPORT  I2C3_EV_IRQHandler                [WEAK]
-                EXPORT  I2C3_ER_IRQHandler                [WEAK]
                 EXPORT  SPI1_IRQHandler                   [WEAK]
                 EXPORT  USART1_IRQHandler                 [WEAK]
                 EXPORT  LPUART1_IRQHandler                [WEAK]
+                EXPORT  TSC_IRQHandler                    [WEAK]
                 EXPORT  EXTI15_10_IRQHandler              [WEAK]
                 EXPORT  RTC_Alarm_IRQHandler              [WEAK]
-                EXPORT  CRS_IRQHandler                    [WEAK]
-                EXPORT  PWR_SOTF_BLEACT_802ACT_RFPHASE_IRQHandler [WEAK]
+                EXPORT  PWR_SOTF_BLEACT_RFPHASE_IRQHandler [WEAK]
                 EXPORT  IPCC_C1_RX_IRQHandler             [WEAK]
                 EXPORT  IPCC_C1_TX_IRQHandler             [WEAK]
                 EXPORT  HSEM_IRQHandler                   [WEAK]
                 EXPORT  LPTIM1_IRQHandler                 [WEAK]
                 EXPORT  LPTIM2_IRQHandler                 [WEAK]
-                EXPORT  QUADSPI_IRQHandler                [WEAK]
                 EXPORT  AES1_IRQHandler                   [WEAK]
                 EXPORT  AES2_IRQHandler                   [WEAK]
                 EXPORT  RNG_IRQHandler                    [WEAK]
                 EXPORT  FPU_IRQHandler                    [WEAK]
-                EXPORT  DMA2_Channel1_IRQHandler          [WEAK]
-                EXPORT  DMA2_Channel2_IRQHandler          [WEAK]
-                EXPORT  DMA2_Channel3_IRQHandler          [WEAK]
-                EXPORT  DMA2_Channel4_IRQHandler          [WEAK]
-                EXPORT  DMA2_Channel5_IRQHandler          [WEAK]
-                EXPORT  DMA2_Channel6_IRQHandler          [WEAK]
-                EXPORT  DMA2_Channel7_IRQHandler          [WEAK]
                 EXPORT  DMAMUX1_OVR_IRQHandler            [WEAK]
 
 WWDG_IRQHandler
@@ -282,45 +270,33 @@ DMA1_Channel5_IRQHandler
 DMA1_Channel6_IRQHandler
 DMA1_Channel7_IRQHandler
 ADC1_IRQHandler
-USB_HP_IRQHandler
-USB_LP_IRQHandler
 C2SEV_PWR_C2H_IRQHandler
 COMP_IRQHandler
 EXTI9_5_IRQHandler
 TIM1_BRK_IRQHandler
-TIM1_UP_TIM16_IRQHandler
-TIM1_TRG_COM_TIM17_IRQHandler
+TIM1_UP_IRQHandler
+TIM1_TRG_COM_IRQHandler
 TIM1_CC_IRQHandler
 TIM2_IRQHandler
 PKA_IRQHandler
 I2C1_EV_IRQHandler
 I2C1_ER_IRQHandler
-I2C3_EV_IRQHandler
-I2C3_ER_IRQHandler
 SPI1_IRQHandler
 USART1_IRQHandler
 LPUART1_IRQHandler
+TSC_IRQHandler
 EXTI15_10_IRQHandler
 RTC_Alarm_IRQHandler
-CRS_IRQHandler
-PWR_SOTF_BLEACT_802ACT_RFPHASE_IRQHandler
+PWR_SOTF_BLEACT_RFPHASE_IRQHandler
 IPCC_C1_RX_IRQHandler
 IPCC_C1_TX_IRQHandler
 HSEM_IRQHandler
 LPTIM1_IRQHandler
 LPTIM2_IRQHandler
-QUADSPI_IRQHandler
 AES1_IRQHandler
 AES2_IRQHandler
 RNG_IRQHandler
 FPU_IRQHandler
-DMA2_Channel1_IRQHandler
-DMA2_Channel2_IRQHandler
-DMA2_Channel3_IRQHandler
-DMA2_Channel4_IRQHandler
-DMA2_Channel5_IRQHandler
-DMA2_Channel6_IRQHandler
-DMA2_Channel7_IRQHandler
 DMAMUX1_OVR_IRQHandler
 
                 B       .

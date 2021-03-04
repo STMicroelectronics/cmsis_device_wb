@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @file      startup_stm32wb5mxx_cm0.s
+  * @file      startup_stm32wb15xx_cm0.s
   * @author    MCD Application Team
-  * @brief     STM32WB5Mxx devices vector table GCC toolchain.
+  * @brief     STM32WB15xx devices vector table GCC toolchain.
   *            This module performs:
   *                - Set the initial SP
   *                - Set the initial PC == Reset_Handler,
@@ -139,35 +139,35 @@ g_pfnVectors:
   .word 0
   .word PVD_PVM_IRQHandler
   .word RTC_LSECSS_IRQHandler
-  .word USB_CRS_IRQHandler
+  .word 0
   .word RCC_FLASH_C1SEV_IRQHandler
   .word EXTI1_0_IRQHandler
   .word EXTI3_2_IRQHandler
   .word EXTI15_4_IRQHandler
-  .word TSC_802_0_IRQHandler
+  .word TSC_IRQHandler
   .word DMA1_Channel1_2_3_IRQHandler
   .word DMA1_Channel4_5_6_7_IRQHandler
-  .word DMA2_DMAMUX1_OVR_IRQHandler
+  .word DMAMUX1_OVR_IRQHandler
   .word ADC1_COMP_IRQHandler
   .word LPTIM1_IRQHandler
   .word LPTIM2_IRQHandler
   .word TIM1_IRQHandler
   .word TIM2_IRQHandler
-  .word TIM16_IRQHandler
-  .word TIM17_IRQHandler
+  .word 0
+  .word 0
   .word IPCC_C2_RX_C2_TX_HSEM_IRQHandler
-  .word AES1_RNG_PKA_IRQHandler
+  .word RNG_PKA_IRQHandler
   .word AES2_IRQHandler
-  .word LCD_802_1_IRQHandler
+  .word 0
   .word I2C1_IRQHandler
-  .word I2C3_IRQHandler
+  .word 0
   .word SPI1_IRQHandler
-  .word SPI2_IRQHandler
+  .word 0
   .word USART1_IRQHandler
   .word LPUART1_IRQHandler
-  .word SAI1_IRQHandler
+  .word 0
   .word BLE_IRQHandler
-  .word _802_2_HOST_WKUP_IRQHandler
+  .word 0
 
 /*******************************************************************************
 *
@@ -197,9 +197,6 @@ g_pfnVectors:
   .weak  RTC_LSECSS_IRQHandler
   .thumb_set RTC_LSECSS_IRQHandler,Default_Handler
 
-  .weak  USB_CRS_IRQHandler
-  .thumb_set USB_CRS_IRQHandler,Default_Handler
-
   .weak  RCC_FLASH_C1SEV_IRQHandler
   .thumb_set RCC_FLASH_C1SEV_IRQHandler,Default_Handler
 
@@ -212,8 +209,8 @@ g_pfnVectors:
   .weak  EXTI15_4_IRQHandler
   .thumb_set EXTI15_4_IRQHandler,Default_Handler
 
-  .weak  TSC_802_0_IRQHandler
-  .thumb_set TSC_802_0_IRQHandler,Default_Handler
+  .weak  TSC_IRQHandler
+  .thumb_set TSC_IRQHandler,Default_Handler
 
   .weak  DMA1_Channel1_2_3_IRQHandler
   .thumb_set DMA1_Channel1_2_3_IRQHandler,Default_Handler
@@ -221,8 +218,8 @@ g_pfnVectors:
   .weak  DMA1_Channel4_5_6_7_IRQHandler
   .thumb_set DMA1_Channel4_5_6_7_IRQHandler,Default_Handler
 
-  .weak  DMA2_DMAMUX1_OVR_IRQHandler
-  .thumb_set DMA2_DMAMUX1_OVR_IRQHandler,Default_Handler
+  .weak  DMAMUX1_OVR_IRQHandler
+  .thumb_set DMAMUX1_OVR_IRQHandler,Default_Handler
 
   .weak  ADC1_COMP_IRQHandler
   .thumb_set ADC1_COMP_IRQHandler,Default_Handler
@@ -239,35 +236,20 @@ g_pfnVectors:
   .weak  TIM2_IRQHandler
   .thumb_set TIM2_IRQHandler,Default_Handler
 
-  .weak  TIM16_IRQHandler
-  .thumb_set TIM16_IRQHandler,Default_Handler
-
-  .weak  TIM17_IRQHandler
-  .thumb_set TIM17_IRQHandler,Default_Handler
-
   .weak  IPCC_C2_RX_C2_TX_HSEM_IRQHandler
   .thumb_set IPCC_C2_RX_C2_TX_HSEM_IRQHandler,Default_Handler
 
-  .weak  AES1_RNG_PKA_IRQHandler
-  .thumb_set AES1_RNG_PKA_IRQHandler,Default_Handler
+  .weak  RNG_PKA_IRQHandler
+  .thumb_set RNG_PKA_IRQHandler,Default_Handler
 
   .weak  AES2_IRQHandler
   .thumb_set AES2_IRQHandler,Default_Handler
 
-  .weak  LCD_802_1_IRQHandler
-  .thumb_set LCD_802_1_IRQHandler,Default_Handler
-
   .weak  I2C1_IRQHandler
   .thumb_set I2C1_IRQHandler,Default_Handler
 
-  .weak  I2C3_IRQHandler
-  .thumb_set I2C3_IRQHandler,Default_Handler
-
   .weak  SPI1_IRQHandler
   .thumb_set SPI1_IRQHandler,Default_Handler
-
-  .weak  SPI2_IRQHandler
-  .thumb_set SPI2_IRQHandler,Default_Handler
 
   .weak  USART1_IRQHandler
   .thumb_set USART1_IRQHandler,Default_Handler
@@ -275,13 +257,7 @@ g_pfnVectors:
   .weak  LPUART1_IRQHandler
   .thumb_set LPUART1_IRQHandler,Default_Handler
 
-  .weak  SAI1_IRQHandler
-  .thumb_set SAI1_IRQHandler,Default_Handler
-
   .weak  BLE_IRQHandler
   .thumb_set BLE_IRQHandler,Default_Handler
-
-  .weak  _802_2_HOST_WKUP_IRQHandler
-  .thumb_set _802_2_HOST_WKUP_IRQHandler,Default_Handler
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
